@@ -68,7 +68,7 @@ contract Token {
 		allowance[msg.sender][_spender] = _value;
 
 		emit Approval(msg.sender, _spender, _value)
-		return true;
+	;	return true;
 	}
 
 	function transferFrom(
