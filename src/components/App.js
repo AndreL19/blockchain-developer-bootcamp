@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import config from '../config.json';
 
-import { 
+import {
   loadProvider,
   loadNetwork,
   loadAccount,
@@ -35,7 +35,7 @@ function App() {
       loadAccount(provider, dispatch)
     })
 
-    // Load token smart ontracts
+    // Load token smart contracts
     const DApp = config[chainId].DApp
     const mETH = config[chainId].mETH
     await loadTokens(provider, [DApp.address, mETH.address], dispatch)

@@ -27,7 +27,7 @@ export const provider = (state = {}, action) => {
 }
 
 const DEFAULT_TOKENS_STATE = {
-  loaded: false, 
+  loaded: false,
   contracts: [],
   symbols: []
 }
@@ -71,7 +71,7 @@ const DEFAULT_EXCHANGE_STATE = {
   contract: {},
   transaction: {
     isSuccessful: false
-  }, 
+  },
   events: []
 }
 
@@ -84,7 +84,7 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
         contract: action.exchange
       }
 
-    // ---------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------
     // BALANCE CASES
     case 'EXCHANGE_TOKEN_1_BALANCE_LOADED':
       return {
@@ -97,12 +97,12 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
         balances: [...state.balances, action.balance]
       }
 
-    // -------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------
     // TRANSFER CASES (DEPOSIT & WITHDRAWS)
     case 'TRANSFER_REQUEST':
       return {
         ...state,
-        transaction: {
+        trasnsaction: {
           transactionType: 'Transfer',
           isPending: true,
           isSuccessful: false

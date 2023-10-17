@@ -1,4 +1,4 @@
-import { ethers } from 'ethers';
+import { ethers } from 'ethers'
 import TOKEN_ABI from '../abis/Token.json';
 import EXCHANGE_ABI from '../abis/Exchange.json';
 
@@ -57,7 +57,7 @@ export const subscribeToEvents = (exchange, dispatch) => {
   })
 }
 
-// -----------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 // LOAD USER BALANCES (WALLET & EXCHANGE BALANCES)
 
 
@@ -72,14 +72,14 @@ export const loadBalances = async (exchange, tokens, account, dispatch) => {
   dispatch({ type: 'TOKEN_2_BALANCE_LOADED', balance })
 
   balance = ethers.utils.formatUnits(await exchange.balanceOf(tokens[1].address, account), 18)
-  dispatch({ type: 'EXCHANGE_TOKEN_2_BALANCE_LOADED'})
+  dispatch({ type: 'EXCHANGE_TOKEN_2_BALANCE_LOADED', balance })
 
 }
 
-//-------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 // TRANSFER TOKENS (DEPOSIT & WITHDRAWS)
 
-export const transferTokens = async (provider, exchange, transferType, token, amount, dispatch) => {
+export const transferTokens =  async (provider, exchange, transferType, token, amount, dispatch) => {
   let transaction
 
   dispatch({ type: 'TRANSFER_REQUEST' })
