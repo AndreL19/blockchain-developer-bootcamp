@@ -173,7 +173,7 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
       return {
         ...state,
         transaction: {
-          transactionType: 'Fill Order',
+          transactionType: "Fill Order",
           isPending: true,
           isSuccessful: false
         }
@@ -192,7 +192,7 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
       return {
         ...state,
         transaction: {
-          transactionType: 'Fill Order',
+          transactionType: "Fill Order",
           isPending: false,
           isSuccessful: true
         },
@@ -207,7 +207,7 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
       return {
         ...state,
         transaction: {
-          transactionType: 'Fill Order',
+          transactionType: "Fill Order",
           isPending: false,
           isSuccessful: false,
           isError: true
@@ -232,7 +232,7 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
     case 'TRANSFER_REQUEST':
       return {
         ...state,
-        trasnsaction: {
+        transaction: {
           transactionType: 'Transfer',
           isPending: true,
           isSuccessful: false
@@ -258,12 +258,11 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
           isPending: false,
           isSuccessful: false,
           isError: true
-
         },
         transferInProgress: false
       }
 
-    //-----------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------
     // MAKING ORDERS CASES
 
     case 'NEW_ORDER_REQUEST':
@@ -278,7 +277,7 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
 
     case 'NEW_ORDER_SUCCESS':
       // Prevent duplicate orders
-      index = state.allOrders.data.findIndex(order => order.id.toString() === action.orderId.toString())
+      index = state.allOrders.data.findIndex(order => order.id.toString() === action.order.id.toString())
 
       if(index === -1) {
         data = [...state.allOrders.data, action.order]

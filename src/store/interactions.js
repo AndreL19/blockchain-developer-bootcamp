@@ -103,7 +103,7 @@ export const loadAllOrders = async (provider, exchange, dispatch) => {
 
   const block = await provider.getBlockNumber()
 
-  // Fetch cancelled orders
+  // Fetch canceled orders
   const cancelStream = await exchange.queryFilter('Cancel', 0, block)
   const cancelledOrders = cancelStream.map(event => event.args)
 
@@ -150,11 +150,11 @@ export const transferTokens =  async (provider, exchange, transferType, token, a
   }
 }
 
-// -------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 // ORDERS (BUY & SELL)
 
 export const makeBuyOrder = async (provider, exchange, tokens, order, dispatch) => {
-  const tokenGet = tokens[0].address  
+  const tokenGet = tokens[0].address
   const amountGet = ethers.utils.parseUnits(order.amount, 18)
   const tokenGive = tokens[1].address
   const amountGive = ethers.utils.parseUnits((order.amount * order.price).toString(), 18)
@@ -171,7 +171,7 @@ export const makeBuyOrder = async (provider, exchange, tokens, order, dispatch) 
 }
 
 export const makeSellOrder = async (provider, exchange, tokens, order, dispatch) => {
-  const tokenGet = tokens[1].address  
+  const tokenGet = tokens[1].address
   const amountGet = ethers.utils.parseUnits((order.amount * order.price).toString(), 18)
   const tokenGive = tokens[0].address
   const amountGive = ethers.utils.parseUnits(order.amount, 18)
@@ -187,7 +187,7 @@ export const makeSellOrder = async (provider, exchange, tokens, order, dispatch)
   }
 }
 
-// -------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 // CANCEL ORDER
 
 export const cancelOrder = async (provider, exchange, order, dispatch) => {
@@ -203,11 +203,10 @@ export const cancelOrder = async (provider, exchange, order, dispatch) => {
   }
 }
 
-// -------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 // FILL ORDER
 
 export const fillOrder = async (provider, exchange, order, dispatch) => {
-
   dispatch({ type: 'ORDER_FILL_REQUEST' })
 
   try {
@@ -218,4 +217,3 @@ export const fillOrder = async (provider, exchange, order, dispatch) => {
     dispatch({ type: 'ORDER_FILL_FAIL' })
   }
 }
-
