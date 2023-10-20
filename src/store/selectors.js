@@ -103,7 +103,6 @@ const decorateOrder = (order, tokens) => {
   })
 }
 
-
 // -----------------------------------------------------------------------------
 // ALL FILLED ORDERS
 
@@ -222,7 +221,6 @@ const decorateMyFilledOrder = (order, account, tokens) => {
   })
 }
 
-
 // -----------------------------------------------------------------------------
 // ORDER BOOK
 
@@ -284,7 +282,6 @@ const decorateOrderBookOrder = (order, tokens) => {
   	orderFillAction: (orderType === 'buy' ? 'sell' : 'buy')
   })
 }
-
 
 // =============================================================================
 // PRICE CHART
