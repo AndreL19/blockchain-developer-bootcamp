@@ -30,7 +30,7 @@ const Trades = () => {
            </thead>
            <tbody>
 
-             
+             {/* MAPPING OF ORDERS... */}
 
              {filledOrders && filledOrders.map((order, index) =>{
                return(
