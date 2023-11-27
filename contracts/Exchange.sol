@@ -1,3 +1,5 @@
+//Review
+
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
@@ -13,12 +15,8 @@ contract Exchange {
     mapping(uint256 => bool) public orderCancelled;
     mapping(uint256 => bool) public orderFilled;
 
-    event Deposit(
-        address token,
-        address user,
-        uint256 amount,
-        uint256 balance
-    );
+    event Deposit(address token, address user, uint256 amount, uint256 balance);
+
     event Withdraw(
         address token,
         address user,
@@ -70,7 +68,6 @@ contract Exchange {
         feePercent = _feePercent;
     }
 
-
     // ------------------------
     // DEPOSIT & WITHDRAW TOKEN
 
@@ -99,14 +96,12 @@ contract Exchange {
         emit Withdraw(_token, msg.sender, _amount, tokens[_token][msg.sender]);
     }
 
-    function balanceOf(address _token, address _user)
-        public
-        view
-        returns (uint256)
-    {
+    function balanceOf(
+        address _token,
+        address _user
+    ) public view returns (uint256) {
         return tokens[_token][_user];
     }
-
 
     // ------------------------
     // MAKE & CANCEL ORDERS
@@ -121,7 +116,7 @@ contract Exchange {
         require(balanceOf(_tokenGive, msg.sender) >= _amountGive);
 
         // Instantiate a new order
-        orderCount ++;
+        orderCount++;
         orders[orderCount] = _Order(
             orderCount,
             msg.sender,
@@ -168,7 +163,6 @@ contract Exchange {
             block.timestamp
         );
     }
-
 
     // ------------------------
     // EXECUTING ORDERS
@@ -240,5 +234,4 @@ contract Exchange {
             block.timestamp
         );
     }
-
 }
